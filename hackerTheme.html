@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0f0f0f;
+            color: #00ff99;
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: typing 3s steps(20, end), blink 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 3px solid #00ff99;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from, to {
+                border-color: transparent;
+            }
+            50% {
+                border-color: #00ff99;
+            }
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2em;
+            animation: fadeIn 2s 2s ease-in-out;
+            color: #00ff99;
+        }
+
+        .countdown div {
+            text-align: center;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 3em;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>_Launching Soon...</h1>
+        <p>We're working on something exciting. Stay tuned!</p>
+        <div class="countdown">
+            <div>
+                <span id="days">00</span>Days
+            </div>
+            <div>
+                <span id="hours">00</span>Hours
+            </div>
+            <div>
+                <span id="minutes">00</span>Minutes
+            </div>
+            <div>
+                <span id="seconds">00</span>Seconds
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 WiiZARDD. All rights reserved.
+    </footer>
+
+    <script>
+        const countdown = () => {
+            const countDate = new Date('December 31, 2024 23:59:59').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+
+            document.getElementById('days').innerText = textDay;
+            document.getElementById('hours').innerText = textHour;
+            document.getElementById('minutes').innerText = textMinute;
+            document.getElementById('seconds').innerText = textSecond;
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
