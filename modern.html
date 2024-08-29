@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f9f9f9, #e3e4e8);
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            animation: fadeIn 2s ease-in-out;
+            max-width: 500px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            color: #555;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            font-size: 1.2em;
+            color: #555;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .countdown div {
+            text-align: center;
+        }
+
+        .countdown span {
+            display: block;
+            font-size: 2em;
+            color: #ff6347;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>We're Coming Soon!</h1>
+        <p>Our website is under construction, but we're almost ready to launch. Stay tuned!</p>
+        <div class="countdown">
+            <div>
+                <span id="days">00</span>Days
+            </div>
+            <div>
+                <span id="hours">00</span>Hours
+            </div>
+            <div>
+                <span id="minutes">00</span>Minutes
+            </div>
+            <div>
+                <span id="seconds">00</span>Seconds
+            </div>
+        </div>
+        <footer>&copy; 2024 Your Company. All rights reserved.</footer>
+    </div>
+    <script>
+        const countdown = () => {
+            const countDate = new Date('December 31, 2024 23:59:59').getTime();
+            const now = new Date().getTime();
+            const gap = countDate - now;
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+            const textDay = Math.floor(gap / day);
+            const textHour = Math.floor((gap % day) / hour);
+            const textMinute = Math.floor((gap % hour) / minute);
+            const textSecond = Math.floor((gap % minute) / second);
+            document.getElementById('days').innerText = textDay;
+            document.getElementById('hours').innerText = textHour;
+            document.getElementById('minutes').innerText = textMinute;
+            document.getElementById('seconds').innerText = textSecond;
+        };
+
+        setInterval(countdown, 1000);
+    </script>
+</body>
+</html>
